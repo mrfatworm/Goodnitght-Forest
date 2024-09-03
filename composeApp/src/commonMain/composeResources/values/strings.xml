@@ -1,5 +1,5 @@
 <resources>
-    <string name="cyclone">Cyclone</string>
+    <string name="cyclone">睡眠報告</string>
     <string name="open_github">Open github</string>
     <string name="run">Run</string>
     <string name="stop">Stop</string>
