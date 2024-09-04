@@ -1,26 +1,29 @@
-# Compose Multiplatform Application
+![Banner](https://raw.githubusercontent.com/mrfatworm/Goodnitght-Forest/main/screenshot/cover.jpg)
+![GifShow](https://raw.githubusercontent.com/mrfatworm/Goodnitght-Forest/main/screenshot/screen_record_all_platform.gif)
 
-## Before running!
- - check your system with [KDoctor](https://github.com/Kotlin/kdoctor)
- - install JDK 17 or higher on your machine
- - add `local.properties` file to the project root and set a path to Android SDK there
+# Compose Multiplatform
+Jetpack Compose UI with sample data.
 
-### Android
-To run the application on android device/emulator:  
- - open project in Android Studio and run imported android run configuration
+## UI/UX Designer
 
-To build the application bundle:
- - run `./gradlew :composeApp:assembleDebug`
- - find `.apk` file in `composeApp/build/outputs/apk/debug/composeApp-debug.apk`
-Run android UI tests on the connected device: `./gradlew :composeApp:connectedDebugAndroidTest`
+- 貝拉
+- 七卡
+- Clara
+- Alic
+- Tingting
 
-### Desktop
-Run the desktop application: `./gradlew :composeApp:run`
-Run desktop UI tests: `./gradlew :composeApp:jvmTest`
+## Target
 
-### iOS
-To run the application on iPhone device/simulator:
- - Open `iosApp/iosApp.xcproject` in Xcode and run standard configuration
- - Or use [Kotlin Multiplatform Mobile plugin](https://plugins.jetbrains.com/plugin/14936-kotlin-multiplatform-mobile) for Android Studio
-Run iOS simulator UI tests: `./gradlew :composeApp:iosSimulatorArm64Test`
+- ✅ Android
+- ✅ iOS
+- ✅ Desktop
 
+### How To Run
+Open project in Android Studio
+- Android: Select `composeApp` and run
+- iOS: Install plugin "Kotlin Multiplatform", then select `iosApp` and run (open Xcode is required)
+- Desktop: Open terminal and run `./gradlew :composeApp:run`
+
+## Special Thanks
+
+* [AAPD Team](https://medium.com/as-a-product-designer)

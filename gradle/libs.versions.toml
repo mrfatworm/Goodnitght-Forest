@@ -13,7 +13,6 @@ kotlinx-datetime = "0.6.1"
 koin = "4.0.0-RC1"
 navigationCompose = "2.7.0-alpha07"
 splashscreen = "1.0.1"
-skikoVersion = "0.5.1"
 
 [libraries]
 
