@@ -1,7 +1,24 @@
 <resources>
-    <string name="cyclone">睡眠報告</string>
-    <string name="open_github">Open github</string>
-    <string name="run">Run</string>
-    <string name="stop">Stop</string>
-    <string name="theme">Theme</string>
+    <string name="app_name">晚安森林</string>
+    <string name="sign_in">登入</string>
+    <string name="account">帳號</string>
+    <string name="password">密碼</string>
+    <string name="sign_in_later">暫時不登入</string>
+    <string name="sign_in_by_another_way">或使用其他方式登入</string>
+    <string name="no_account">還沒有帳號嗎?</string>
+    <string name="sign_up">註冊</string>
+    <string name="invalid_email">請輸入有效的電子郵件地址</string>
+
+    <string name="home">首頁</string>
+    <string name="sleep_report">睡眠報告</string>">
+    <string name="sleep_health_room">睡眠保健室</string>
+    <string name="profile">我的頁面</string>
+
+    <string name="goodnight">晚安！</string>
+    <string name="who_will_you_meet_tonight">今晚會遇到哪個神秘的小夥伴，帶你進入夢鄉？</string>
+    <string name="explore_your_sleep_companion">探索\n助眠夥伴</string>
+    <string name="sleep_now">現在入睡</string>
+    <string name="set_alarm">設定鬧鐘</string>
+    <string name="my_companion">我的夥伴</string>
+    <string name="sleep_tool">助眠工具</string>
 </resources>
