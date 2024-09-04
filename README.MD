@@ -1,8 +1,8 @@
 ![Banner](https://raw.githubusercontent.com/mrfatworm/Goodnitght-Forest/main/screenshot/cover.jpg)
 ![GifShow](https://raw.githubusercontent.com/mrfatworm/Goodnitght-Forest/main/screenshot/screen_record_all_platform.gif)
 
-# Compose Multiplatform
-Jetpack Compose UI with sample data.
+# Goodnight Forest
+Compose multiplatform project with sample data
 
 ## UI/UX Designer
 
