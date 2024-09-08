@@ -17,6 +17,7 @@ import goodnitght_forest.composeapp.generated.resources.ic_profile_filled
 import goodnitght_forest.composeapp.generated.resources.ic_report
 import goodnitght_forest.composeapp.generated.resources.ic_report_filled
 import goodnitght_forest.composeapp.generated.resources.profile
+import goodnitght_forest.composeapp.generated.resources.sleep_companion
 import goodnitght_forest.composeapp.generated.resources.sleep_health_room
 import goodnitght_forest.composeapp.generated.resources.sleep_report
 import org.jetbrains.compose.resources.DrawableResource
@@ -35,6 +36,7 @@ sealed class Screen(
     data object SleepReport : Screen("report", Res.string.sleep_report, Res.drawable.ic_report, Res.drawable.ic_report_filled)
     data object HealthRoom : Screen("health_room", Res.string.sleep_health_room, Res.drawable.ic_health_room, Res.drawable.ic_health_room_filled)
     data object Profile : Screen("profile", Res.string.profile, Res.drawable.ic_profile, Res.drawable.ic_profile_filled)
+    data object CompanionBanner : Screen("companion_banner", Res.string.sleep_companion)
 }
 
 val BottomScreens = listOf(

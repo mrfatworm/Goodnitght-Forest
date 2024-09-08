@@ -10,6 +10,10 @@ import androidx.navigation.NavHostController
 
 class GnfNavActions(private val navController: NavHostController) {
 
+    fun navigationTo(destination: Screen) {
+        navController.navigate(destination.route)
+    }
+
     fun navigationToTopAndSave(destination: Screen) {
         navController.navigate(destination.route) {
             popUpTo(navController.graph.findStartDestination().route?: "Home") {
@@ -27,10 +31,4 @@ class GnfNavActions(private val navController: NavHostController) {
             }
         }
     }
-
-//    fun navigationAndClearBackStack(destination: Screen) {
-//        navController.navigate(destination.route) {
-//            popUpTo(0)
-//        }
-//    }
 }

@@ -21,4 +21,44 @@
     <string name="set_alarm">設定鬧鐘</string>
     <string name="my_companion">我的夥伴</string>
     <string name="sleep_tool">助眠工具</string>
+
+    <string name="sleep_companion">助眠夥伴</string>
+    <string name="click_to_pull">點擊抽卡</string>
+    <string name="start">開始</string>
+    <string name="try_another_way_to_help_sleep">也可以試試其它助眠方式</string>
+    <string name="relax_music">療癒音樂</string>
+    <string name="de_stress_meditation">解壓冥想</string>
+    <string name="relax_breath">放鬆呼吸</string>
+    <string name="sleep_story">睡前故事</string>
+    <string name="white_noise">白噪音</string>
+
+    <string name="sleep_quality">睡眠品質</string>
+    <string name="very_high">極高</string>
+    <string name="high">高</string>
+    <string name="medium">中</string>
+    <string name="low">低</string>
+
+    <string name="on_bed_time">床上時間</string>
+    <string name="sleep_time">入眠時間</string>
+    <string name="time_template_hour_min">%1$s時%2$s分</string>
+    <string name="time_template_time_slots_hour">%1$s%2$s時</string>
+    <string name="sleep_report_last_night">昨晚睡眠報告</string>
+    <string name="time_high">時長高</string>
+    <string name="time_short">時長短</string>
+    <string name="awake">醒著</string>
+    <string name="light_sleep">浅睡</string>
+    <string name="deep_sleep">深睡</string>
+    <string name="rem">REM</string>
+
+    <string name="average">平均</string>
+    <string name="times">次</string>
+    <string name="decibel">分貝</string>
+    <string name="per_hour">/每小時</string>
+    <string name="breath_break">呼吸中斷</string>
+    <string name="snore_status">鼾聲狀況</string>
+    <string name="cough_status">咳嗽狀況</string>
+    <string name="environment_noise">環境噪音</string>
+    <string name="breath_frequency">呼吸頻率</string>
+    <string name="heart_rate">心率</string>
+
 </resources>

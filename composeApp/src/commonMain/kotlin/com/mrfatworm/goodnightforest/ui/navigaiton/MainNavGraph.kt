@@ -10,7 +10,6 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.compose.NavHost
@@ -33,7 +32,6 @@ fun MainNavGraph(
     val navActions = remember(GnfNavActions(navController)) {
         GnfNavActions(navController)
     }
-    val coroutineScope = rememberCoroutineScope()
 
     Box(
         modifier = Modifier.fillMaxSize()
@@ -44,7 +42,7 @@ fun MainNavGraph(
             startDestination = Screen.Home.route
         ) {
             composable(Screen.Home.route) {
-                HomeScreen()
+                HomeScreen(onExploreCompanionClick = { rootNavActions.navigationTo(Screen.CompanionBanner) })
             }
             composable(Screen.SleepReport.route) {
                 SleepReportScreen()

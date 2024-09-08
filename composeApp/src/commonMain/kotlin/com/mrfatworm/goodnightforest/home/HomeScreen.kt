@@ -60,12 +60,12 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(onExploreCompanionClick: () -> Unit) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
         HomeBackgroundImage()
-        HomeContent()
+        HomeContent(onExploreCompanionClick)
     }
 }
 
@@ -92,7 +92,7 @@ private fun HomeBackgroundImage() {
 }
 
 @Composable
-private fun HomeContent() {
+private fun HomeContent(onExploreCompanionClick: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -113,11 +113,10 @@ private fun HomeContent() {
 
         val interactionSource = remember { MutableInteractionSource() }
         Box(
-            modifier = Modifier.clickable(
-                    interactionSource = interactionSource,
-                    indication = null,
-                    onClick = {}).padding(top = 32.dp).padding(16.dp).padding(8.dp),
-            contentAlignment = Alignment.Center
+            modifier = Modifier.clickable(interactionSource = interactionSource,
+                indication = null,
+                onClick = { onExploreCompanionClick() }).padding(top = 32.dp).padding(16.dp)
+                .padding(8.dp), contentAlignment = Alignment.Center
         ) {
             AnimateBox()
             BubbleBox(
@@ -176,14 +175,14 @@ private fun AnimateBox() {
     }
     Spacer(
         modifier = Modifier.size(148.dp).rotate(currentRotation1).background(
-                Brush.horizontalGradient(listOf(Color(0x33FFFFFF), Color(0x80FFFFFF))),
-                RoundedCornerShape(AppTheme.radius.bubble)
-            )
+            Brush.horizontalGradient(listOf(Color(0x33FFFFFF), Color(0x80FFFFFF))),
+            RoundedCornerShape(AppTheme.radius.bubble)
+        )
     )
     Spacer(
         modifier = Modifier.size(154.dp).rotate(currentRotation2).background(
-                Brush.horizontalGradient(listOf(Color(0x33FFFFFF), Color(0x80FFFFFF))),
-                RoundedCornerShape(AppTheme.radius.bubble)
-            )
+            Brush.horizontalGradient(listOf(Color(0x33FFFFFF), Color(0x80FFFFFF))),
+            RoundedCornerShape(AppTheme.radius.bubble)
+        )
     )
 }

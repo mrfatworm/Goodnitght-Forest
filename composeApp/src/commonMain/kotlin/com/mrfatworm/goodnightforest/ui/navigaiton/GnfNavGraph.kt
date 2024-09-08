@@ -11,14 +11,14 @@ import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.mrfatworm.goodnightforest.companion.CompanionBannerScreen
 import com.mrfatworm.goodnightforest.sign.SignInScreen
 
 @Composable
 fun GnfNavGraph(
     navController: NavHostController, navActions: GnfNavActions
 ) {
-    NavHost(
-        navController = navController,
+    NavHost(navController = navController,
         startDestination = Screen.SignIn.route,
         enterTransition = {
             slideIntoContainer(
@@ -38,6 +38,10 @@ fun GnfNavGraph(
 
         composable(route = Screen.MainFlow.route) {
             MainNavGraph(rootNavActions = navActions)
+        }
+
+        composable(route = Screen.CompanionBanner.route) {
+            CompanionBannerScreen(onBackClick = navController::popBackStack)
         }
     }
 }

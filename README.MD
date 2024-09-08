@@ -18,7 +18,8 @@ Compose multiplatform project with sample data
 - ✅ iOS
 - ✅ Desktop
 
-### How To Run
+## How To Run
+
 Open project in Android Studio
 - Android: Select `composeApp` and run
 - iOS: Install plugin "Kotlin Multiplatform", then select `iosApp` and run (open Xcode is required)
