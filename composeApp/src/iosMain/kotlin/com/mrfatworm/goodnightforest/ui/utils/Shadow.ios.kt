@@ -4,9 +4,10 @@ import androidx.compose.ui.graphics.NativePaint
 import org.jetbrains.skia.BlendMode
 import org.jetbrains.skia.FilterBlurMode
 import org.jetbrains.skia.MaskFilter
-import org.jetbrains.skia.PaintMode
 
-internal actual fun NativePaint.blurMaskFilter(radius: Float) {
-    blendMode = BlendMode.DST_OUT
+internal actual fun NativePaint.blurMaskFilter(radius: Float, isDstOut: Boolean) {
+    if (isDstOut) {
+        blendMode = BlendMode.DST_OUT
+    }
     this.maskFilter = MaskFilter.makeBlur(FilterBlurMode.NORMAL, radius / 2, true)
 }

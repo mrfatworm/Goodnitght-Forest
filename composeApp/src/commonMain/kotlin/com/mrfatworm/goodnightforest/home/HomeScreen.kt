@@ -11,6 +11,8 @@ import androidx.compose.animation.core.infiniteRepeatable
 import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -71,17 +73,17 @@ fun HomeScreen() {
 private fun HomeBackgroundImage() {
     Image(
         modifier = Modifier.fillMaxSize().drawWithCache {
-                onDrawWithContent {
-                    drawContent()
-                    drawRect(
-                        brush = Brush.verticalGradient(
-                            colors = listOf(Color(0xE81D1A3E), Color(0x001D1A3E)),
-                            startY = size.height,
-                            endY = size.height / 3
-                        )
+            onDrawWithContent {
+                drawContent()
+                drawRect(
+                    brush = Brush.verticalGradient(
+                        colors = listOf(Color(0xE81D1A3E), Color(0x001D1A3E)),
+                        startY = size.height,
+                        endY = size.height / 3
                     )
-                }
-            },
+                )
+            }
+        },
         painter = painterResource(Res.drawable.bg_2),
         contentDescription = null,
         contentScale = ContentScale.Crop,
@@ -108,45 +110,16 @@ private fun HomeContent() {
                 style = AppTheme.typography.t3
             )
         }
+
+        val interactionSource = remember { MutableInteractionSource() }
         Box(
-            modifier = Modifier.padding(top = 32.dp).padding(16.dp).padding(8.dp),
+            modifier = Modifier.clickable(
+                    interactionSource = interactionSource,
+                    indication = null,
+                    onClick = {}).padding(top = 32.dp).padding(16.dp).padding(8.dp),
             contentAlignment = Alignment.Center
         ) {
-            var currentRotation1 by remember { mutableFloatStateOf(0f) }
-            var currentRotation2 by remember { mutableFloatStateOf(135f) }
-            val animateRotation1 = remember { Animatable(currentRotation1) }
-            val animateRotation2 = remember { Animatable(currentRotation2) }
-
-            LaunchedEffect(true) {
-                animateRotation1.animateTo(
-                    targetValue = currentRotation1 - 360f, animationSpec = infiniteRepeatable(
-                        animation = tween(6400, easing = LinearEasing)
-                    )
-                ) {
-                    currentRotation1 = value
-                }
-            }
-            LaunchedEffect(true) {
-                animateRotation2.animateTo(
-                    targetValue = currentRotation2 + 360f, animationSpec = infiniteRepeatable(
-                        animation = tween(7200, easing = LinearEasing)
-                    )
-                ) {
-                    currentRotation2 = value
-                }
-            }
-            Spacer(
-                modifier = Modifier.size(148.dp).rotate(currentRotation1).background(
-                        Brush.horizontalGradient(listOf(Color(0x33FFFFFF), Color(0x80FFFFFF))),
-                        RoundedCornerShape(48)
-                    )
-            )
-            Spacer(
-                modifier = Modifier.size(154.dp).rotate(currentRotation2).background(
-                        Brush.horizontalGradient(listOf(Color(0x33FFFFFF), Color(0x4DFFFFFF))),
-                        RoundedCornerShape(48)
-                    )
-            )
+            AnimateBox()
             BubbleBox(
                 modifier = Modifier.size(128.dp).rotate(15f)
             )
@@ -173,4 +146,44 @@ private fun HomeContent() {
             BubbleIconButton(Res.string.sleep_tool, Res.drawable.ic_bed, onClick = {})
         }
     }
+}
+
+
+@Composable
+private fun AnimateBox() {
+    var currentRotation1 by remember { mutableFloatStateOf(0f) }
+    var currentRotation2 by remember { mutableFloatStateOf(135f) }
+    val animateRotation1 = remember { Animatable(currentRotation1) }
+    val animateRotation2 = remember { Animatable(currentRotation2) }
+
+    LaunchedEffect(true) {
+        animateRotation1.animateTo(
+            targetValue = currentRotation1 - 360f, animationSpec = infiniteRepeatable(
+                animation = tween(6400, easing = LinearEasing)
+            )
+        ) {
+            currentRotation1 = value
+        }
+    }
+    LaunchedEffect(true) {
+        animateRotation2.animateTo(
+            targetValue = currentRotation2 + 360f, animationSpec = infiniteRepeatable(
+                animation = tween(7200, easing = LinearEasing)
+            )
+        ) {
+            currentRotation2 = value
+        }
+    }
+    Spacer(
+        modifier = Modifier.size(148.dp).rotate(currentRotation1).background(
+                Brush.horizontalGradient(listOf(Color(0x33FFFFFF), Color(0x80FFFFFF))),
+                RoundedCornerShape(AppTheme.radius.bubble)
+            )
+    )
+    Spacer(
+        modifier = Modifier.size(154.dp).rotate(currentRotation2).background(
+                Brush.horizontalGradient(listOf(Color(0x33FFFFFF), Color(0x80FFFFFF))),
+                RoundedCornerShape(AppTheme.radius.bubble)
+            )
+    )
 }

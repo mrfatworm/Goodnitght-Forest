@@ -26,4 +26,5 @@ Open project in Android Studio
 
 ## Special Thanks
 
+* [Compose Multiplatform Wizard](https://github.com/terrakok/Compose-Multiplatform-Wizard)
 * [AAPD Team](https://medium.com/as-a-product-designer)

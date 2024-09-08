@@ -10,6 +10,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -18,12 +19,10 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
-import androidx.compose.material3.ripple
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -34,6 +33,7 @@ import com.mrfatworm.goodnightforest.ui.theme.ColorScheme
 import com.mrfatworm.goodnightforest.ui.theme.blue300
 import com.mrfatworm.goodnightforest.ui.theme.blue700
 import com.mrfatworm.goodnightforest.ui.theme.white200
+import com.mrfatworm.goodnightforest.ui.utils.dropShadow
 import goodnitght_forest.composeapp.generated.resources.Res
 import goodnitght_forest.composeapp.generated.resources.home
 import goodnitght_forest.composeapp.generated.resources.ic_home
@@ -48,8 +48,8 @@ fun GnfBottomNavigation(
 ) {
     Row(
         modifier = modifier.fillMaxWidth().padding(
-                start = 16.dp, end = 16.dp, bottom = 24.dp
-            ).background(color = AppTheme.colors.bg2, shape = CircleShape).offset(y = (-16).dp)
+            start = 16.dp, end = 16.dp, bottom = 24.dp
+        ).background(color = AppTheme.colors.bg2, shape = CircleShape).offset(y = (-16).dp)
             .padding(horizontal = 48.dp), verticalAlignment = Alignment.Bottom
     ) {
         BottomScreens.forEach { screen ->
@@ -79,28 +79,29 @@ fun NavItem(
 ) {
     Column(
         modifier = modifier.clickable(
-            interactionSource = remember { MutableInteractionSource() }, indication = ripple()
+            interactionSource = remember { MutableInteractionSource() }, indication = null
         ) { onClick() },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(if (selected) 4.dp else 6.dp)
     ) {
         if (selected) {
-            Icon(modifier = Modifier.drawWithContent {
-                    drawCircle(color = ColorScheme().bg1, radius = size.minDimension / 2.2f)
-                    drawCircle(
-                        brush = Brush.radialGradient(
-                            listOf(
-                                Color(0x80FFFFFF), Color(0x00FFFFFF)
+            Box(modifier = Modifier.background(color = ColorScheme().bg1, CircleShape)) {
+                Icon(
+                    modifier = Modifier.background(
+                            Brush.radialGradient(
+                                listOf(
+                                    Color(0x80FFFFFF), Color(0x00FFFFFF)
+                                )
                             )
-                        )
-                    )
-                    drawContent()
-                }.padding(8.dp).background(
-                    Brush.verticalGradient(listOf(blue300, blue700)), shape = CircleShape
-                ).border(1.dp, white200, CircleShape).padding(10.dp),
-                imageVector = vectorResource(iconSelectedRes),
-                contentDescription = stringResource(textRes),
-                tint = Color.Unspecified)
+                        ).padding(4.dp)
+                        .dropShadow(CircleShape, Color.White.copy(0.4f), blur = 10.dp).background(
+                            Brush.verticalGradient(listOf(blue300, blue700)), shape = CircleShape
+                        ).border(1.dp, white200, CircleShape).padding(10.dp),
+                    imageVector = vectorResource(iconSelectedRes),
+                    contentDescription = stringResource(textRes),
+                    tint = Color.Unspecified
+                )
+            }
 
 
         } else {
