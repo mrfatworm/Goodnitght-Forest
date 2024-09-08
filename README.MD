@@ -2,7 +2,17 @@
 ![GifShow](https://raw.githubusercontent.com/mrfatworm/Goodnitght-Forest/main/screenshot/screen_record_all_platform.gif)
 
 # Goodnight Forest
+
 Compose multiplatform project with sample data
+
+## Screenshot
+
+  <div style="display: flex; width: 100%">
+  <img src="screenshot/screen_record_banner.gif" width="30%"/>
+  <img src="screenshot/screen_record_dashboard.gif" width="30%"/>
+  <img src="screenshot/screen_record_all_dashboard.gif" width="40%"/>
+  </div>
+
 
 ## UI/UX Designer
 
@@ -21,6 +31,7 @@ Compose multiplatform project with sample data
 ## How To Run
 
 Open project in Android Studio
+
 - Android: Select `composeApp` and run
 - iOS: Install plugin "Kotlin Multiplatform", then select `iosApp` and run (open Xcode is required)
 - Desktop: Open terminal and run `./gradlew :composeApp:run`
