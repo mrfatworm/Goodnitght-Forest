@@ -70,9 +70,7 @@ fun HomeScreen() {
 @Composable
 private fun HomeBackgroundImage() {
     Image(
-        modifier = Modifier
-            .fillMaxSize()
-            .drawWithCache {
+        modifier = Modifier.fillMaxSize().drawWithCache {
                 onDrawWithContent {
                     drawContent()
                     drawRect(
@@ -97,9 +95,7 @@ private fun HomeContent() {
         modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .padding(start = AppTheme.dimens.s24, end = AppTheme.dimens.s24, top = 110.dp)
+            modifier = Modifier.fillMaxWidth().padding(start = 24.dp, end = 24.dp, top = 110.dp)
         ) {
             Text(
                 text = stringResource(Res.string.goodnight),
@@ -113,10 +109,8 @@ private fun HomeContent() {
             )
         }
         Box(
-            modifier = Modifier
-                .padding(top = 32.dp)
-                .padding(AppTheme.dimens.s16)
-                .padding(AppTheme.dimens.s8), contentAlignment = Alignment.Center
+            modifier = Modifier.padding(top = 32.dp).padding(16.dp).padding(8.dp),
+            contentAlignment = Alignment.Center
         ) {
             var currentRotation1 by remember { mutableFloatStateOf(0f) }
             var currentRotation2 by remember { mutableFloatStateOf(135f) }
@@ -142,27 +136,19 @@ private fun HomeContent() {
                 }
             }
             Spacer(
-                modifier = Modifier
-                    .size(148.dp)
-                    .rotate(currentRotation1)
-                    .background(
+                modifier = Modifier.size(148.dp).rotate(currentRotation1).background(
                         Brush.horizontalGradient(listOf(Color(0x33FFFFFF), Color(0x80FFFFFF))),
-                        RoundedCornerShape(AppTheme.dimens.s48)
+                        RoundedCornerShape(48)
                     )
             )
             Spacer(
-                modifier = Modifier
-                    .size(154.dp)
-                    .rotate(currentRotation2)
-                    .background(
+                modifier = Modifier.size(154.dp).rotate(currentRotation2).background(
                         Brush.horizontalGradient(listOf(Color(0x33FFFFFF), Color(0x4DFFFFFF))),
-                        RoundedCornerShape(AppTheme.dimens.s48)
+                        RoundedCornerShape(48)
                     )
             )
             BubbleBox(
-                modifier = Modifier
-                    .size(128.dp)
-                    .rotate(15f)
+                modifier = Modifier.size(128.dp).rotate(15f)
             )
             Text(
                 text = stringResource(Res.string.explore_your_sleep_companion),
@@ -177,19 +163,13 @@ private fun HomeContent() {
             onClick = {})
 
         Row(
-            modifier = Modifier
-                .padding(top = 56.dp)
-                .fillMaxWidth(),
+            modifier = Modifier.padding(top = 56.dp).fillMaxWidth(),
             horizontalArrangement = Arrangement.spacedBy(
-                AppTheme.dimens.s48, Alignment.CenterHorizontally
+                48.dp, Alignment.CenterHorizontally
             )
         ) {
-            BubbleIconButton(Res.string.set_alarm,
-                Res.drawable.ic_alert,
-                onClick = {})
-            BubbleIconButton(Res.string.my_companion,
-                Res.drawable.ic_tool,
-                onClick = {})
+            BubbleIconButton(Res.string.set_alarm, Res.drawable.ic_alert, onClick = {})
+            BubbleIconButton(Res.string.my_companion, Res.drawable.ic_tool, onClick = {})
             BubbleIconButton(Res.string.sleep_tool, Res.drawable.ic_bed, onClick = {})
         }
     }

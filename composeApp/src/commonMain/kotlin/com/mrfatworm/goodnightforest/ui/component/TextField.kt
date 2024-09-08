@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.unit.dp
 import com.mrfatworm.goodnightforest.ui.theme.AppTheme
 import com.mrfatworm.goodnightforest.ui.theme.white300
 import com.mrfatworm.goodnightforest.ui.theme.white50
@@ -49,7 +50,7 @@ fun GnfTextFiled(
     keyboardOptions: KeyboardOptions = KeyboardOptions.Default
 ) {
     val passwordInvisible = remember { mutableStateOf(true) }
-    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(AppTheme.dimens.s8)) {
+    Column(modifier = modifier, verticalArrangement = Arrangement.spacedBy(8.dp)) {
         if (title != null) {
             Text(text = title, style = AppTheme.typography.s6, color = AppTheme.colors.text1)
         }
@@ -66,13 +67,13 @@ fun GnfTextFiled(
             textStyle = AppTheme.typography.t2,
             enabled = enabled,
             isError = error,
-            shape = RoundedCornerShape(AppTheme.radius.r16),
+            shape = RoundedCornerShape(AppTheme.radius.textFiled),
             colors = textFiledColors(),
             keyboardOptions = keyboardOptions,
             visualTransformation = if (isPassword && passwordInvisible.value) PasswordVisualTransformation() else VisualTransformation.None,
             trailingIcon = {
                 if (isPassword) {
-                    IconButton(modifier = Modifier.padding(end = AppTheme.dimens.s8), onClick = {
+                    IconButton(modifier = Modifier.padding(end = 8.dp), onClick = {
                         passwordInvisible.value = !passwordInvisible.value
                     }) {
                         Icon(
@@ -82,7 +83,8 @@ fun GnfTextFiled(
                         )
                     }
                 } else if (text.isNotBlank()) {
-                    IconButton(modifier = Modifier.padding(end = AppTheme.dimens.s8),
+                    IconButton(
+                        modifier = Modifier.padding(end = 8.dp),
                         onClick = { onTextChange("") }) {
                         Icon(
                             vectorResource(Res.drawable.ic_close),
@@ -92,7 +94,7 @@ fun GnfTextFiled(
                     }
                 }
             })
-        Row(modifier.padding(horizontal = AppTheme.dimens.s16)) {
+        Row(modifier.padding(horizontal = 16.dp)) {
             if (startHint != null) {
                 Text(
                     modifier = Modifier.weight(1f),

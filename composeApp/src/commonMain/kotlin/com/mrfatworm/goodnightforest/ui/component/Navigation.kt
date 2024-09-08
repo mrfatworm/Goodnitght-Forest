@@ -47,22 +47,18 @@ fun GnfBottomNavigation(
     modifier: Modifier = Modifier, selectedDestination: String, navActions: GnfNavActions?
 ) {
     Row(
-        modifier = modifier
-            .fillMaxWidth()
-            .padding(
-                start = AppTheme.dimens.s16, end = AppTheme.dimens.s16, bottom = AppTheme.dimens.s24
-            )
-            .background(color = AppTheme.colors.bg2, shape = CircleShape)
-            .offset(y = (-16).dp)
-            .padding(horizontal = AppTheme.dimens.s48), verticalAlignment = Alignment.Bottom
+        modifier = modifier.fillMaxWidth().padding(
+                start = 16.dp, end = 16.dp, bottom = 24.dp
+            ).background(color = AppTheme.colors.bg2, shape = CircleShape).offset(y = (-16).dp)
+            .padding(horizontal = 48.dp), verticalAlignment = Alignment.Bottom
     ) {
         BottomScreens.forEach { screen ->
             val selected = selectedDestination == screen.route
             NavItem(modifier = Modifier.weight(1f),
                 selected = selected,
-                iconDefaultRes = screen.iconDefaultRes?: Res.drawable.ic_home,
-                iconSelectedRes = screen.iconSelectedRes?: Res.drawable.ic_home,
-                textRes = screen.textRes?: Res.string.home,
+                iconDefaultRes = screen.iconDefaultRes ?: Res.drawable.ic_home,
+                iconSelectedRes = screen.iconSelectedRes ?: Res.drawable.ic_home,
+                textRes = screen.textRes ?: Res.string.home,
                 onClick = {
                     if (!selected) {
                         navActions?.navigationToTopAndSave(screen)
@@ -83,15 +79,13 @@ fun NavItem(
 ) {
     Column(
         modifier = modifier.clickable(
-            interactionSource = remember { MutableInteractionSource() },
-            indication = ripple()
+            interactionSource = remember { MutableInteractionSource() }, indication = ripple()
         ) { onClick() },
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.spacedBy(if (selected) 4.dp else 6.dp)
     ) {
         if (selected) {
-            Icon(modifier = Modifier
-                .drawWithContent {
+            Icon(modifier = Modifier.drawWithContent {
                     drawCircle(color = ColorScheme().bg1, radius = size.minDimension / 2.2f)
                     drawCircle(
                         brush = Brush.radialGradient(
@@ -101,13 +95,9 @@ fun NavItem(
                         )
                     )
                     drawContent()
-                }
-                .padding(8.dp)
-                .background(
+                }.padding(8.dp).background(
                     Brush.verticalGradient(listOf(blue300, blue700)), shape = CircleShape
-                )
-                .border(1.dp, white200, CircleShape)
-                .padding(10.dp),
+                ).border(1.dp, white200, CircleShape).padding(10.dp),
                 imageVector = vectorResource(iconSelectedRes),
                 contentDescription = stringResource(textRes),
                 tint = Color.Unspecified)

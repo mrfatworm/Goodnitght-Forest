@@ -55,13 +55,8 @@ import goodnitght_forest.composeapp.generated.resources.sign_up
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
-const val emailPattern = "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
-        "\\@" +
-        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
-        "(" +
-        "\\." +
-        "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
-        ")+"
+const val emailPattern =
+    "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" + "\\@" + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" + "(" + "\\." + "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" + ")+"
 val emailRegex = emailPattern.toRegex()
 
 @Composable
@@ -73,9 +68,7 @@ fun SignInScreen(onSignInClick: () -> Unit = {}) {
         modifier = Modifier.fillMaxSize()
     ) {
         Image(
-            modifier = Modifier
-                .fillMaxSize()
-                .drawWithCache {
+            modifier = Modifier.fillMaxSize().drawWithCache {
                     onDrawWithContent {
                         drawContent()
                         drawRect(
@@ -100,11 +93,8 @@ fun SignInScreen(onSignInClick: () -> Unit = {}) {
             alpha = 0.15f,
         )
         Column(
-            modifier = Modifier
-                .fillMaxWidth()
-                .verticalScroll(rememberScrollState())
-                .padding(horizontal = AppTheme.dimens.s24),
-            verticalArrangement = Arrangement.spacedBy(AppTheme.dimens.s24)
+            modifier = Modifier.fillMaxWidth().verticalScroll(rememberScrollState())
+                .padding(horizontal = 24.dp), verticalArrangement = Arrangement.spacedBy(24.dp)
         ) {
             Spacer(modifier = Modifier.size(96.dp))
             Text(
@@ -112,15 +102,14 @@ fun SignInScreen(onSignInClick: () -> Unit = {}) {
                 style = AppTheme.typography.h4,
                 color = AppTheme.colors.text1
             )
-            Column(verticalArrangement = Arrangement.spacedBy(AppTheme.dimens.s16)) {
+            Column(verticalArrangement = Arrangement.spacedBy(16.dp)) {
                 GnfTextFiled(
                     modifier = Modifier.fillMaxWidth(),
                     text = emailText.value,
                     title = stringResource(Res.string.account),
                     onTextChange = {
                         emailText.value = it
-                        emailError.value =
-                            !emailText.value.matches(emailRegex)
+                        emailError.value = !emailText.value.matches(emailRegex)
                     },
                     placeholder = stringResource(
                         Res.string.account
@@ -149,18 +138,13 @@ fun SignInScreen(onSignInClick: () -> Unit = {}) {
                 )
 
                 PrimaryButton(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .imePadding()
-                        .padding(top = 68.dp),
+                    modifier = Modifier.fillMaxWidth().imePadding().padding(top = 68.dp),
                     text = stringResource(Res.string.sign_in),
                     enabled = emailText.value.matches(emailRegex) && (passwordText.value.isNotBlank()),
                     onClick = onSignInClick
                 )
 
-                Text(modifier = Modifier
-                    .clickable { onSignInClick() }
-                    .fillMaxWidth(),
+                Text(modifier = Modifier.clickable { onSignInClick() }.fillMaxWidth(),
                     text = stringResource(Res.string.sign_in_later),
                     textAlign = TextAlign.Center,
                     color = AppTheme.colors.text2,
@@ -172,7 +156,7 @@ fun SignInScreen(onSignInClick: () -> Unit = {}) {
                 ) {
                     HorizontalDivider(modifier = Modifier.weight(1f), color = AppTheme.colors.text3)
                     Text(
-                        modifier = Modifier.padding(horizontal = AppTheme.dimens.s16),
+                        modifier = Modifier.padding(horizontal = 16.dp),
                         text = stringResource(Res.string.sign_in_by_another_way),
                         color = AppTheme.colors.text3,
                         style = AppTheme.typography.s6
@@ -181,11 +165,9 @@ fun SignInScreen(onSignInClick: () -> Unit = {}) {
                 }
 
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = AppTheme.dimens.s16),
+                    modifier = Modifier.fillMaxWidth().padding(top = 16.dp),
                     horizontalArrangement = Arrangement.spacedBy(
-                        AppTheme.dimens.s12, Alignment.CenterHorizontally
+                        12.dp, Alignment.CenterHorizontally
                     )
                 ) {
                     LoginIconButton(Res.drawable.ic_facebook)
@@ -194,11 +176,9 @@ fun SignInScreen(onSignInClick: () -> Unit = {}) {
                 }
 
                 Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(top = 40.dp),
+                    modifier = Modifier.fillMaxWidth().padding(top = 40.dp),
                     horizontalArrangement = Arrangement.spacedBy(
-                        AppTheme.dimens.s4, Alignment.CenterHorizontally
+                        4.dp, Alignment.CenterHorizontally
                     )
                 ) {
                     Text(

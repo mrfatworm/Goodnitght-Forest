@@ -39,21 +39,26 @@ val bubbleBackground = Brush.horizontalGradient(listOf(Color(0x00FFFFFF), Color(
 
 @Composable
 fun BubbleButton(
-    modifier: Modifier = Modifier, textRes: StringResource, iconRes: DrawableResource, onClick: () -> Unit
+    modifier: Modifier = Modifier,
+    textRes: StringResource,
+    iconRes: DrawableResource,
+    onClick: () -> Unit
 ) {
     val interactionSource = remember { MutableInteractionSource() }
-    Row(modifier = modifier
-        .clickable(
+    Row(modifier = modifier.clickable(
             interactionSource = interactionSource, indication = ripple(radius = 64.dp)
         ) { onClick() }
         // Draw the background.
         .background(bubbleBackground, CircleShape, alpha = 0.7f)
         // Glare effect
         .innerShadow(
-            shape = CircleShape, color = shadowWhite, offsetY = 0.dp, offsetX = 0.dp, blur = 15.dp
-        )
-        .padding(vertical = AppTheme.dimens.s12, horizontal = AppTheme.dimens.s24),
-        horizontalArrangement = Arrangement.spacedBy(AppTheme.dimens.s4),
+            shape = CircleShape,
+            color = shadowWhite,
+            offsetY = 0.dp,
+            offsetX = 0.dp,
+            blur = 15.dp
+        ).padding(vertical = 12.dp, horizontal = 24.dp),
+        horizontalArrangement = Arrangement.spacedBy(4.dp),
         verticalAlignment = Alignment.CenterVertically) {
         Icon(
             imageVector = vectorResource(iconRes),
@@ -77,19 +82,16 @@ fun BubbleIconButton(textRes: StringResource, iconRes: DrawableResource, onClick
             interactionSource = interactionSource, indication = null
         ) { onClick() },
         horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.spacedBy(AppTheme.dimens.s8)
+        verticalArrangement = Arrangement.spacedBy(8.dp)
     ) {
         Icon(
-            modifier = Modifier
-                .background(bubbleBackground, CircleShape, alpha = 0.7f)
-                .innerShadow(
+            modifier = Modifier.background(bubbleBackground, CircleShape, alpha = 0.7f).innerShadow(
                     shape = CircleShape,
                     color = shadowWhite,
                     offsetY = 0.dp,
                     offsetX = 0.dp,
                     blur = 15.dp
-                )
-                .padding(10.dp),
+                ).padding(10.dp),
             imageVector = vectorResource(iconRes),
             contentDescription = stringResource(textRes),
             tint = if (isPressed.value) AppTheme.colors.icon1.copy(alpha = 0.4f) else AppTheme.colors.icon1
@@ -103,10 +105,9 @@ fun BubbleIconButton(textRes: StringResource, iconRes: DrawableResource, onClick
 }
 
 @Composable
-fun BubbleBox(modifier: Modifier = Modifier, radius: Dp = AppTheme.radius.r48) {
+fun BubbleBox(modifier: Modifier = Modifier, radius: Dp = AppTheme.radius.bubble) {
     Spacer(
-        modifier = modifier
-            .background(bubbleBackground, RoundedCornerShape(radius), alpha = 0.7f)
+        modifier = modifier.background(bubbleBackground, RoundedCornerShape(radius), alpha = 0.7f)
             // Glare effect
             .innerShadow(
                 shape = RoundedCornerShape(radius),

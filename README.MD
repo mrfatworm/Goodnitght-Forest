@@ -9,7 +9,7 @@ Compose multiplatform project with sample data
 - 貝拉
 - 七卡
 - Clara
-- Alic
+- Alice
 - Tingting
 
 ## Target

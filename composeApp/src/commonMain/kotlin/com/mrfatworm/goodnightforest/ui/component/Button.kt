@@ -101,9 +101,7 @@ fun GnfButton(
     ) {
         if (hasIcon) {
             Icon(
-                modifier = Modifier
-                    .padding(end = AppTheme.dimens.s4)
-                    .size(20.dp),
+                modifier = Modifier.padding(end = 4.dp).size(20.dp),
                 imageVector = vectorResource(iconRes),
                 contentDescription = ""
             )
