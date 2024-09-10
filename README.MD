@@ -8,11 +8,11 @@ Compose multiplatform project with sample data
 ## Screenshot
 
 <p>
-  <img src="screenshot/screen_record_banner.gif" width="150" />
-  <img src="screenshot/screen_record_standby.gif" width="150" />
-  <img src="screenshot/screen_record_health_room.gif" width="150" />
-  <img src="screenshot/screen_record_dashboard.gif" width="150" />
-  <img src="screenshot/screen_record_all_dashboard.gif" width="150" />
+  <img src="screenshot/screen_record_banner.gif" width="200" />
+  <img src="screenshot/screen_record_standby.gif" width="200" />
+  <img src="screenshot/screen_record_health_room.gif" width="200" />
+  <img src="screenshot/screen_record_dashboard.gif" width="200" />
+  <img src="screenshot/screen_record_all_dashboard.gif" width="300" />
 </p>
 
 
