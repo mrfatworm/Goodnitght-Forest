@@ -60,12 +60,12 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 
 @Composable
-fun HomeScreen(onExploreCompanionClick: () -> Unit) {
+fun HomeScreen(onExploreCompanionClick: () -> Unit, onSleepNowClick: () -> Unit = {}) {
     Box(
         modifier = Modifier.fillMaxSize()
     ) {
         HomeBackgroundImage()
-        HomeContent(onExploreCompanionClick)
+        HomeContent(onExploreCompanionClick, onSleepNowClick)
     }
 }
 
@@ -92,7 +92,7 @@ private fun HomeBackgroundImage() {
 }
 
 @Composable
-private fun HomeContent(onExploreCompanionClick: () -> Unit) {
+private fun HomeContent(onExploreCompanionClick: () -> Unit, onSleepNowClick: () -> Unit) {
     Column(
         modifier = Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally
     ) {
@@ -132,7 +132,7 @@ private fun HomeContent(onExploreCompanionClick: () -> Unit) {
         BubbleButton(modifier = Modifier.padding(top = 96.dp),
             Res.string.sleep_now,
             Res.drawable.ic_sleep_moon,
-            onClick = {})
+            onClick = { onSleepNowClick() })
 
         Row(
             modifier = Modifier.padding(top = 56.dp).fillMaxWidth(),

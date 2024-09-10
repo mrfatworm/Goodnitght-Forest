@@ -37,6 +37,7 @@ sealed class Screen(
     data object HealthRoom : Screen("health_room", Res.string.sleep_health_room, Res.drawable.ic_health_room, Res.drawable.ic_health_room_filled)
     data object Profile : Screen("profile", Res.string.profile, Res.drawable.ic_profile, Res.drawable.ic_profile_filled)
     data object CompanionBanner : Screen("companion_banner", Res.string.sleep_companion)
+    data object SleepStandby : Screen("sleep_standby")
 }
 
 val BottomScreens = listOf(

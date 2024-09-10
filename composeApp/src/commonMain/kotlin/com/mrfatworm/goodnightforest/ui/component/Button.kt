@@ -5,6 +5,7 @@
 
 package com.mrfatworm.goodnightforest.ui.component
 
+import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -16,6 +17,7 @@ import androidx.compose.material3.ButtonElevation
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
@@ -35,6 +37,7 @@ fun PrimaryButton(
     iconRes: DrawableResource = Res.drawable.ic_home,
     enabled: Boolean = true,
     elevation: ButtonElevation? = ButtonDefaults.buttonElevation(),
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit = {}
 ) {
     GnfButton(
@@ -48,6 +51,7 @@ fun PrimaryButton(
         iconRes = iconRes,
         enabled = enabled,
         elevation = elevation,
+        interactionSource = interactionSource,
         onClick = onClick,
     )
 }
@@ -60,6 +64,7 @@ fun SecondaryButton(
     iconRes: DrawableResource = Res.drawable.ic_home,
     enabled: Boolean = true,
     elevation: ButtonElevation? = ButtonDefaults.buttonElevation(),
+    interactionSource: MutableInteractionSource = remember { MutableInteractionSource() },
     onClick: () -> Unit = {}
 ) {
     GnfButton(
@@ -73,6 +78,7 @@ fun SecondaryButton(
         iconRes = iconRes,
         enabled = enabled,
         elevation = elevation,
+        interactionSource = interactionSource,
         onClick = onClick
     )
 }
@@ -89,15 +95,22 @@ fun GnfButton(
     iconRes: DrawableResource = Res.drawable.ic_home,
     enabled: Boolean = true,
     elevation: ButtonElevation? = ButtonDefaults.buttonElevation(),
+    interactionSource: MutableInteractionSource,
     onClick: () -> Unit = {},
 ) {
     Button(
-        modifier = modifier.height(50.dp), shape = RoundedCornerShape(64.dp), colors = ButtonColors(
+        modifier = modifier.height(50.dp),
+        shape = RoundedCornerShape(64.dp),
+        colors = ButtonColors(
             containerColor = containerColor,
             contentColor = contentColor,
             disabledContainerColor = disabledContainerColor,
             disabledContentColor = disabledContentColor
-        ), enabled = enabled, elevation = elevation, onClick = onClick
+        ),
+        enabled = enabled,
+        elevation = elevation,
+        interactionSource = interactionSource,
+        onClick = onClick
     ) {
         if (hasIcon) {
             Icon(

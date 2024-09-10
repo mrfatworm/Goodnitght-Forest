@@ -13,6 +13,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import com.mrfatworm.goodnightforest.companion.CompanionBannerScreen
 import com.mrfatworm.goodnightforest.sign.SignInScreen
+import com.mrfatworm.goodnightforest.timer.SleepStandbyScreen
 
 @Composable
 fun GnfNavGraph(
@@ -42,6 +43,10 @@ fun GnfNavGraph(
 
         composable(route = Screen.CompanionBanner.route) {
             CompanionBannerScreen(onBackClick = navController::popBackStack)
+        }
+
+        composable(route = Screen.SleepStandby.route) {
+            SleepStandbyScreen(onBackClick = navController::popBackStack)
         }
     }
 }

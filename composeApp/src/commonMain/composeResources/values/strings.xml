@@ -61,4 +61,14 @@
     <string name="breath_frequency">呼吸頻率</string>
     <string name="heart_rate">心率</string>
 
+    <string name="alarm_not_set">未設定鬧鐘</string>
+    <string name="long_click_to_finish_record">長按結束紀錄</string>
+
+    <string name="recommend_article">推薦文章</string>
+    <string name="online_doctor">線上醫生</string>
+    <string name="suggest_article">建議文章</string>
+    <string name="booked_article">收藏文章</string>
+    <string name="popular_article">熱門文章</string>
+    <string name="see_more">看更多</string>
+
 </resources>

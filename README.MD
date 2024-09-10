@@ -7,11 +7,11 @@ Compose multiplatform project with sample data
 
 ## Screenshot
 
-  <div style="display: flex; width: 100%">
-  <img src="screenshot/screen_record_banner.gif" width="30%"/>
-  <img src="screenshot/screen_record_dashboard.gif" width="30%"/>
-  <img src="screenshot/screen_record_all_dashboard.gif" width="40%"/>
-  </div>
+<p>
+  <img src="screenshot/screen_record_banner.gif" width="30%" />
+  <img src="screenshot/screen_record_dashboard.gif" width="30%" />
+  <img src="screenshot/screen_record_all_dashboard.gif" width="40%" />
+</p>
 
 
 ## UI/UX Designer

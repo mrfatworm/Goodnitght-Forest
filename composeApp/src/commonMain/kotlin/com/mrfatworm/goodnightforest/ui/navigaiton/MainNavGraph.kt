@@ -42,7 +42,8 @@ fun MainNavGraph(
             startDestination = Screen.Home.route
         ) {
             composable(Screen.Home.route) {
-                HomeScreen(onExploreCompanionClick = { rootNavActions.navigationTo(Screen.CompanionBanner) })
+                HomeScreen(onExploreCompanionClick = { rootNavActions.navigationTo(Screen.CompanionBanner) },
+                    onSleepNowClick = { rootNavActions.navigationTo(Screen.SleepStandby) })
             }
             composable(Screen.SleepReport.route) {
                 SleepReportScreen()
