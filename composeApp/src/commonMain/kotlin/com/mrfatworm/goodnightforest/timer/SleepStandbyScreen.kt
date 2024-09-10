@@ -107,8 +107,6 @@ fun SleepStandbyScreen(onBackClick: () -> Unit = {}) {
             )
 
             val pagerState = rememberPagerState(pageCount = { 5 })
-            val configuration = LocalWindowInfo.current.containerSize
-            val screenWidth = configuration.width.dp
             val coroutineScope = rememberCoroutineScope()
 
             Spacer(modifier = Modifier.size(72.dp))

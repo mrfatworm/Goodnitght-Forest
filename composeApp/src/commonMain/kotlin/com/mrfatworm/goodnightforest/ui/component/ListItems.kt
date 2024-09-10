@@ -109,7 +109,7 @@ fun LessonPagerItem(
             painter = painterResource(lessonPager.imageRes),
             contentDescription = ""
         )
-        Image(modifier = Modifier.fillMaxSize().drawWithContent {
+        Image(modifier = Modifier.fillMaxSize().aspectRatio(1f).drawWithContent {
                 clipRect(top = size.height * 0.77f) {
                     this@drawWithContent.drawContent()
                 }
