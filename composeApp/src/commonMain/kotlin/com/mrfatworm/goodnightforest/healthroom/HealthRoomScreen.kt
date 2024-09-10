@@ -33,6 +33,7 @@ import androidx.compose.ui.unit.dp
 import com.mrfatworm.goodnightforest.ui.component.ArticleItem
 import com.mrfatworm.goodnightforest.ui.component.ArticleLargeItem
 import com.mrfatworm.goodnightforest.ui.component.GnfTopBar
+import com.mrfatworm.goodnightforest.ui.component.data.ArticleListItemState
 import com.mrfatworm.goodnightforest.ui.component.data.sampleBookedArticleList
 import com.mrfatworm.goodnightforest.ui.component.data.samplePopularArticleList
 import com.mrfatworm.goodnightforest.ui.component.data.sampleSuggestArticleList
@@ -43,12 +44,12 @@ import goodnitght_forest.composeapp.generated.resources.bg_3
 import goodnitght_forest.composeapp.generated.resources.booked_article
 import goodnitght_forest.composeapp.generated.resources.ic_arrow_right
 import goodnitght_forest.composeapp.generated.resources.ic_calendar
+import goodnitght_forest.composeapp.generated.resources.newest_article
 import goodnitght_forest.composeapp.generated.resources.online_doctor
 import goodnitght_forest.composeapp.generated.resources.popular_article
 import goodnitght_forest.composeapp.generated.resources.recommend_article
 import goodnitght_forest.composeapp.generated.resources.see_more
 import goodnitght_forest.composeapp.generated.resources.sleep_health_room
-import goodnitght_forest.composeapp.generated.resources.suggest_article
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
@@ -84,7 +85,7 @@ fun HealthRoomScreen() {
                 modifier = Modifier.fillMaxWidth().background(AppTheme.colors.bg1)
             ) {
                 Spacer(modifier = Modifier.size(12.dp))
-                ImagesListTitle(Res.string.suggest_article)
+                ImagesListTitle(Res.string.newest_article)
                 LazyRow(contentPadding = PaddingValues(horizontal = 24.dp)) {
                     items(sampleSuggestArticleList) { article ->
                         ArticleLargeItem(modifier = Modifier.size(192.dp), uiState = article)
@@ -92,23 +93,22 @@ fun HealthRoomScreen() {
                     }
                 }
                 Spacer(modifier = Modifier.size(16.dp))
-                ImagesListTitle(Res.string.booked_article)
-                LazyRow(contentPadding = PaddingValues(horizontal = 24.dp)) {
-                    items(sampleBookedArticleList) { article ->
-                        ArticleItem(modifier = Modifier.width(144.dp), uiState = article)
-                        Spacer(modifier = Modifier.size(16.dp))
-                    }
-                }
+                ArticleListGroup(Res.string.booked_article, sampleBookedArticleList)
                 Spacer(modifier = Modifier.size(16.dp))
-                ImagesListTitle(Res.string.popular_article)
-                LazyRow(contentPadding = PaddingValues(horizontal = 24.dp)) {
-                    items(samplePopularArticleList) { article ->
-                        ArticleItem(modifier = Modifier.width(144.dp), uiState = article)
-                        Spacer(modifier = Modifier.size(16.dp))
-                    }
-                }
+                ArticleListGroup(Res.string.popular_article, samplePopularArticleList)
             }
             Spacer(modifier = Modifier.size(AppTheme.dimens.bottomNavigationSpace))
+        }
+    }
+}
+
+@Composable
+fun ArticleListGroup(titleRes: StringResource, articleList: List<ArticleListItemState>) {
+    ImagesListTitle(titleRes)
+    LazyRow(contentPadding = PaddingValues(horizontal = 24.dp)) {
+        items(articleList) { article ->
+            ArticleItem(modifier = Modifier.width(144.dp), uiState = article)
+            Spacer(modifier = Modifier.size(16.dp))
         }
     }
 }

@@ -42,6 +42,7 @@
     <string name="sleep_time">入眠時間</string>
     <string name="time_template_hour_min">%1$s時%2$s分</string>
     <string name="time_template_time_slots_hour">%1$s%2$s時</string>
+    <string name="time_template_minute">%1$s分鐘</string>
     <string name="sleep_report_last_night">昨晚睡眠報告</string>
     <string name="time_high">時長高</string>
     <string name="time_short">時長短</string>
@@ -65,8 +66,9 @@
     <string name="long_click_to_finish_record">長按結束紀錄</string>
 
     <string name="recommend_article">推薦文章</string>
+    <string name="personal_recommend_article">個人化文章推薦</string>
     <string name="online_doctor">線上醫生</string>
-    <string name="suggest_article">建議文章</string>
+    <string name="newest_article">最新文章</string>
     <string name="booked_article">收藏文章</string>
     <string name="popular_article">熱門文章</string>
     <string name="see_more">看更多</string>

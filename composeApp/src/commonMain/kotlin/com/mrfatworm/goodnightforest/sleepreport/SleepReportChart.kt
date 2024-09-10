@@ -32,8 +32,7 @@ import goodnitght_forest.composeapp.generated.resources.awake
 import goodnitght_forest.composeapp.generated.resources.deep_sleep
 import goodnitght_forest.composeapp.generated.resources.light_sleep
 import goodnitght_forest.composeapp.generated.resources.rem
-import goodnitght_forest.composeapp.generated.resources.time_high
-import goodnitght_forest.composeapp.generated.resources.time_short
+import goodnitght_forest.composeapp.generated.resources.time_template_minute
 import goodnitght_forest.composeapp.generated.resources.time_template_time_slots_hour
 import org.jetbrains.compose.resources.StringResource
 import org.jetbrains.compose.resources.stringResource
@@ -52,16 +51,13 @@ fun SleepReportChart(
                 Modifier.fillMaxHeight().padding(bottom = 24.dp),
                 verticalArrangement = Arrangement.SpaceBetween
             ) {
-                Text(
-                    text = stringResource(Res.string.time_high),
-                    color = AppTheme.colors.text2,
-                    style = AppTheme.typography.t5
-                )
-                Text(
-                    text = stringResource(Res.string.time_short),
-                    color = AppTheme.colors.text2,
-                    style = AppTheme.typography.t5
-                )
+                for (min in 40 downTo 10 step 10) {
+                    Text(
+                        text = stringResource(Res.string.time_template_minute, min),
+                        color = AppTheme.colors.text2,
+                        style = AppTheme.typography.t5
+                    )
+                }
             }
             Column(Modifier.weight(1f), verticalArrangement = Arrangement.spacedBy(8.dp)) {
                 Row(Modifier.weight(1f).height(200.dp), verticalAlignment = Alignment.Bottom) {
@@ -99,9 +95,8 @@ fun SleepReportChart(
 private fun Histogram(modifier: Modifier, sleepHistogram: SleepHistogramState) {
     Spacer(
         modifier = modifier.height((200 * sleepHistogram.sleepTime).dp).background(
-                sleepHistogram.sleepQuality.color,
-                RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp)
-            )
+            sleepHistogram.sleepQuality.color, RoundedCornerShape(topStart = 4.dp, topEnd = 4.dp)
+        )
     )
 }
 

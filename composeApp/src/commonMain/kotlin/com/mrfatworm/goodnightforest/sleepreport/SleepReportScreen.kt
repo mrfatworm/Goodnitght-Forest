@@ -27,10 +27,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.mrfatworm.goodnightforest.healthroom.ArticleListGroup
 import com.mrfatworm.goodnightforest.sleepreport.data.SleepQualityState
 import com.mrfatworm.goodnightforest.sleepreport.data.SleepReportState
 import com.mrfatworm.goodnightforest.sleepreport.data.sampleSleepReportState
 import com.mrfatworm.goodnightforest.ui.component.GnfTopBar
+import com.mrfatworm.goodnightforest.ui.component.data.sampleBookedArticleList
 import com.mrfatworm.goodnightforest.ui.theme.AppTheme
 import com.mrfatworm.goodnightforest.ui.theme.white300
 import com.mrfatworm.goodnightforest.ui.theme.white50
@@ -41,6 +43,7 @@ import goodnitght_forest.composeapp.generated.resources.ic_big_bed
 import goodnitght_forest.composeapp.generated.resources.ic_sleep_moon
 import goodnitght_forest.composeapp.generated.resources.on_bed_time
 import goodnitght_forest.composeapp.generated.resources.per_hour
+import goodnitght_forest.composeapp.generated.resources.personal_recommend_article
 import goodnitght_forest.composeapp.generated.resources.sleep_report
 import goodnitght_forest.composeapp.generated.resources.sleep_report_last_night
 import goodnitght_forest.composeapp.generated.resources.sleep_time
@@ -105,6 +108,8 @@ fun SleepReportScreen(uiState: SleepReportState = sampleSleepReportState) {
                 )
             }
         }
+
+        ArticleListGroup(Res.string.personal_recommend_article, sampleBookedArticleList)
         Spacer(modifier = Modifier.height(AppTheme.dimens.bottomNavigationSpace))
 
     }

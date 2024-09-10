@@ -9,5 +9,5 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 data class Dimens (
-    val bottomNavigationSpace: Dp = 120.dp
+    val bottomNavigationSpace: Dp = 128.dp
 )
