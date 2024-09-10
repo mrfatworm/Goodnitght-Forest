@@ -29,14 +29,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.BlurredEdgeTreatment
 import androidx.compose.ui.draw.blur
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.draw.drawWithContent
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.drawscope.clipRect
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
+import com.mrfatworm.goodnightforest.ui.component.data.ArticleListItemState
 import com.mrfatworm.goodnightforest.ui.component.data.LessonListItemState
 import com.mrfatworm.goodnightforest.ui.component.data.LessonPager
 import com.mrfatworm.goodnightforest.ui.theme.AppTheme
+import com.mrfatworm.goodnightforest.ui.theme.ColorScheme
 import com.mrfatworm.goodnightforest.ui.theme.blue200
 import com.mrfatworm.goodnightforest.ui.utils.conditional
 import com.mrfatworm.goodnightforest.ui.utils.dropShadow
@@ -74,13 +78,13 @@ fun LessonListItem(
         ) {
             Icon(
                 modifier = Modifier.padding(18.dp).size(36.dp).conditional(selected) {
-                        dropShadow(
-                            shape = CircleShape,
-                            color = Color(0xCCD6D0F5),
-                            blur = 16.dp,
-                            spread = -(8.dp)
-                        )
-                    },
+                    dropShadow(
+                        shape = CircleShape,
+                        color = Color(0xCCD6D0F5),
+                        blur = 16.dp,
+                        spread = -(8.dp)
+                    )
+                },
                 imageVector = vectorResource(uiState.iconRes),
                 contentDescription = null,
                 tint = if (selected) blue200 else AppTheme.colors.primaryLight
@@ -109,7 +113,8 @@ fun LessonPagerItem(
             painter = painterResource(lessonPager.imageRes),
             contentDescription = ""
         )
-        Image(modifier = Modifier.fillMaxSize().aspectRatio(1f).drawWithContent {
+        Image(
+            modifier = Modifier.fillMaxSize().aspectRatio(1f).drawWithContent {
                 clipRect(top = size.height * 0.77f) {
                     this@drawWithContent.drawContent()
                 }
@@ -120,7 +125,8 @@ fun LessonPagerItem(
             ),
             painter = painterResource(lessonPager.imageRes),
             contentDescription = null,
-            contentScale = ContentScale.Crop)
+            contentScale = ContentScale.Crop
+        )
         Text(
             modifier = Modifier.align(Alignment.BottomCenter).padding(vertical = 12.dp),
             text = lessonPager.title,
@@ -139,6 +145,95 @@ fun LessonPagerItem(
                     contentDescription = null
                 )
             }
+        }
+    }
+}
+
+
+@Composable
+fun ArticleLargeItem(
+    modifier: Modifier, uiState: ArticleListItemState
+) {
+    Box(modifier = modifier) {
+        Image(
+            modifier = Modifier.fillMaxWidth().aspectRatio(1f)
+                .clip(RoundedCornerShape(AppTheme.radius.imageListItem)),
+            painter = painterResource(uiState.imgRes),
+            contentDescription = ""
+        )
+        Image(modifier = Modifier.fillMaxSize().drawWithContent {
+                clipRect(top = size.height * 0.7f) {
+                    this@drawWithContent.drawContent()
+                }
+            }.drawWithCache {
+                onDrawWithContent {
+                    drawContent()
+                    drawRect(
+                        color = ColorScheme().bg1.copy(alpha = 0.5f)
+                    )
+                }
+            }.blur(
+                32.dp, edgeTreatment = BlurredEdgeTreatment(
+                    RoundedCornerShape(AppTheme.radius.imageListItem)
+                )
+            ),
+            painter = painterResource(uiState.imgRes),
+            contentDescription = null,
+            contentScale = ContentScale.Crop)
+        Column(
+            modifier = Modifier.fillMaxWidth().align(Alignment.BottomCenter)
+                .padding(horizontal = 12.dp, vertical = 10.dp),
+            verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            Text(
+                text = uiState.title,
+                color = AppTheme.colors.text1,
+                style = AppTheme.typography.h7,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+            Text(
+                text = uiState.description,
+                color = AppTheme.colors.text2,
+                style = AppTheme.typography.t5,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+        }
+    }
+}
+
+@Composable
+fun ArticleItem(
+    modifier: Modifier, uiState: ArticleListItemState
+) {
+    Column(
+        modifier = modifier, verticalArrangement = Arrangement.spacedBy(8.dp)
+    ) {
+        Image(
+            modifier = Modifier.fillMaxWidth().aspectRatio(1f)
+                .clip(RoundedCornerShape(AppTheme.radius.imageListItem)),
+            painter = painterResource(uiState.imgRes),
+            contentDescription = ""
+        )
+
+        Column(
+            modifier = Modifier.fillMaxWidth(), verticalArrangement = Arrangement.spacedBy(4.dp)
+        ) {
+            Text(
+                text = uiState.title,
+                color = AppTheme.colors.text1,
+                style = AppTheme.typography.s6,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
+            Text(
+                text = uiState.description,
+                color = AppTheme.colors.text2,
+                style = AppTheme.typography.t5,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis
+            )
         }
     }
 }

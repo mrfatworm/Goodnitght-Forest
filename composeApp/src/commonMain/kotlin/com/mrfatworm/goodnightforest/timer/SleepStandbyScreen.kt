@@ -5,7 +5,6 @@
 
 package com.mrfatworm.goodnightforest.timer
 
-import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.interaction.collectIsPressedAsState
@@ -28,13 +27,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
-import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.drawWithCache
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.platform.LocalWindowInfo
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.util.lerp
 import com.mrfatworm.goodnightforest.ui.component.LessonPagerItem
@@ -59,7 +56,6 @@ import org.jetbrains.compose.resources.painterResource
 import org.jetbrains.compose.resources.stringResource
 import kotlin.math.absoluteValue
 
-@OptIn(ExperimentalFoundationApi::class, ExperimentalComposeUiApi::class)
 @Composable
 fun SleepStandbyScreen(onBackClick: () -> Unit = {}) {
     Box(
@@ -67,17 +63,17 @@ fun SleepStandbyScreen(onBackClick: () -> Unit = {}) {
     ) {
         Image(
             modifier = Modifier.fillMaxSize().align(Alignment.TopCenter).drawWithCache {
-                    onDrawWithContent {
-                        drawContent()
-                        drawRect(
-                            brush = Brush.verticalGradient(
-                                listOf(ColorScheme().bg1, ColorScheme().bg1.copy(alpha = 0.16f)),
-                                startY = size.height,
-                                endY = size.height / 3
-                            )
+                onDrawWithContent {
+                    drawContent()
+                    drawRect(
+                        brush = Brush.verticalGradient(
+                            listOf(ColorScheme().bg1, ColorScheme().bg1.copy(alpha = 0.16f)),
+                            startY = size.height,
+                            endY = size.height / 3
                         )
-                    }
-                },
+                    )
+                }
+            },
             painter = painterResource(Res.drawable.bg_5),
             contentDescription = null,
             contentScale = ContentScale.Crop,
@@ -118,21 +114,19 @@ fun SleepStandbyScreen(onBackClick: () -> Unit = {}) {
                 pageSpacing = 0.dp,
             ) { page ->
                 LessonPagerItem(Modifier.size(200.dp).graphicsLayer {
-                        // Calculate the absolute offset for the current page from the
-                        // scroll position. We use the absolute value which allows us to mirror
-                        // any effects for both directions
-                        val pageOffset =
-                            ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
-                        // We animate the alpha, between 75% and 100%
-                        lerp(
-                            start = 0.75f,
-                            stop = 1f,
-                            fraction = 1f - pageOffset.coerceIn(0f, 1f)
-                        ).also { scale ->
-                            scaleX = scale
-                            scaleY = scale
-                        }
-                    },
+                    // Calculate the absolute offset for the current page from the
+                    // scroll position. We use the absolute value which allows us to mirror
+                    // any effects for both directions
+                    val pageOffset =
+                        ((pagerState.currentPage - page) + pagerState.currentPageOffsetFraction).absoluteValue
+                    // We animate the alpha, between 75% and 100%
+                    lerp(
+                        start = 0.75f, stop = 1f, fraction = 1f - pageOffset.coerceIn(0f, 1f)
+                    ).also { scale ->
+                        scaleX = scale
+                        scaleY = scale
+                    }
+                },
                     sampleLessonPager.lessonPagers[page],
                     isForeground = pagerState.currentPage == page,
                     onClick = {

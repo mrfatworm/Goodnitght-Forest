@@ -5,12 +5,21 @@
 
 package com.mrfatworm.goodnightforest.ui.utils
 
+import androidx.compose.foundation.Canvas
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Outline
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.graphics.Path
+import androidx.compose.ui.graphics.PathEffect
 import androidx.compose.ui.graphics.StrokeCap
+import androidx.compose.ui.graphics.drawOutline
 import androidx.compose.ui.graphics.drawscope.DrawScope
 import androidx.compose.ui.graphics.drawscope.Stroke
+import androidx.compose.ui.graphics.drawscope.drawIntoCanvas
 import androidx.compose.ui.graphics.drawscope.rotate
 import androidx.compose.ui.unit.Dp
 
@@ -52,6 +61,47 @@ fun DrawScope.drawDashBoardLines(
                 end = Offset(x = lineLength + padding, y = centerY),
                 strokeWidth = 1f
             )
+        }
+    }
+}
+
+@Composable
+fun TrapezoidCanvas(modifier: Modifier, shapeColor: Color) {
+    Canvas(modifier = modifier) {
+        val trianglePath = Path().apply {
+            moveTo(0f, 0f)
+            lineTo(size.width * 0.8f, 0f)
+            lineTo(size.width, size.height)
+            lineTo(0f, size.height)
+            close()
+        }
+        //補上左側圓角
+        val rectanglePath = Path().apply {
+            moveTo(0f, 0f)
+            lineTo(size.width * 0.50f, 0f)
+            lineTo(size.width * 0.8f, size.height)
+            lineTo(0f, size.height)
+            close()
+        }
+        //補上右下圓角
+        val lowTrianglePath = Path().apply {
+            moveTo(0f, size.height * 0.5f)
+            lineTo(size.width * 0.9f, size.height * 0.5f)
+            lineTo(size.width, size.height)
+            lineTo(0f, size.height)
+            close()
+        }
+
+        drawIntoCanvas { canvas ->
+            canvas.drawOutline(
+                outline = Outline.Generic(trianglePath),
+                paint = Paint().apply {
+                    color = shapeColor
+                    pathEffect = PathEffect.cornerPathEffect(64f)
+                }
+            )
+            canvas.drawPath(rectanglePath, Paint().apply { color = shapeColor })
+            canvas.drawPath(lowTrianglePath, Paint().apply { color = shapeColor })
         }
     }
 }
