@@ -11,7 +11,7 @@ plugins {
 }
 
 kotlin {
-    jvmToolchain(11)
+    jvmToolchain(17)
     androidTarget {
         //https://www.jetbrains.com/help/kotlin-multiplatform-dev/compose-test.html
         instrumentedTestVariant.sourceSetTree.set(KotlinSourceSetTree.test)
@@ -108,8 +108,20 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.mrfatworm.goodnightforest.desktopApp"
+            packageName = "Goodnight Forest"
             packageVersion = "1.0.0"
+            description = "Goodnight Forest MVP Compose App"
+            copyright = "© 2024 mrfatworm. All rights reserved."
+            vendor = "Lance Kingdom"
+            macOS {
+                iconFile.set(project.file("src/jvmMain/resources/icons/app_logo.icns"))
+            }
+            windows {
+                iconFile.set(project.file("src/jvmMain/resources/icons/app_logo.ico"))
+            }
+            linux {
+                iconFile.set(project.file("src/jvmMain/resources/icons/app_logo.png"))
+            }
         }
     }
 }
