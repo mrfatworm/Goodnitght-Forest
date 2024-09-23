@@ -1,6 +1,8 @@
 ![Banner](https://raw.githubusercontent.com/mrfatworm/Goodnitght-Forest/main/screenshot/cover.jpg)
 ![GifShow](https://raw.githubusercontent.com/mrfatworm/Goodnitght-Forest/main/screenshot/screen_record_all_platform.gif)
 
+✅ Desktop ✅ iOS ✅ Android
+
 # Goodnight Forest
 
 Compose multiplatform project with sample data
@@ -24,11 +26,19 @@ Compose multiplatform project with sample data
 - Alice
 - Tingting
 
-## Target
+## Tech Stack / 使用技術
 
-- ✅ Android
-- ✅ iOS
-- ✅ Desktop
+- Kotlin Multiplatform
+- Compose Multiplatform
+- JetBrains Navigation Compose
+- Splash Screen
+- APP Icon
+- Design System
+    - UI Component
+    - Color Libray
+    - Typographic
+    - Radius
+    - Spacer  
 
 ## How To Run
 
